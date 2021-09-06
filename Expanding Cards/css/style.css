@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Muli', sans-serif;
+  display: flex;
+
+  align-items: center;/* Has to be checked */
+  justify-content: center; /* Has to be checked */
+  height: 100vh; /* Has to be checked */
+  overflow: hidden; /* Prevent scroll bars to be showen by default */
+  margin: 0;
+
+}
+
+.container{
+  display: flex;
+  width: 90vw; /* vw = viewPort width*/
+}
+
+.panel{
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 50px; /* make it rounded*/
+  color: white;
+  cursor: pointer;
+  flex: 0.5; /* flex-grow */
+  margin: 10px;
+  position: relative;
+  transition: flex 0.7s ease-in; /*puting transition on flex with ease-in effect*/
+}
+
+.panel h3 {
+  font-size: 24px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  /* Try visibility:hidden instead of opacity*/
+  opacity: 0; /*opacity: 0.0 - 1.0 => lower number, more transparent */
+}
+
+.panel.active{
+  flex: 5;
+}
+.panel.active h3{
+  opacity: 1;
+  transition: opacity 0.5s ease-in 0.4s;
+}
+
+@media(max-width: 480px) {
+  .container{
+    width: 100vw;
+  }
+  .panel:nth-of-type(4),/* NOTE: Selects every fourth <panel class>
+   among any group of siblings */
+  .panel:nth-of-type(5){
+  display: none;
+}
+}
