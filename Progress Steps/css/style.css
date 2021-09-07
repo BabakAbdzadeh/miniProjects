@@ -1,17 +1,150 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+/* NOTE: custom property => basically they are just variables*/
+:root {
+  --line-border-fill: #349adb;
+  /* NOTE: variables for Color */
+  --line-border-empty: #e0e0e0;
+}
 
 * {
   box-sizing: border-box;
 }
 
-body{
-  font-family: 'Roberto', sans-serif;
+body {
+  background-color: #f6f7fb;
+  font-family: 'Muli', sans-serif;
   display: flex;
   flex-direction: column;
-  align-items: center;/* Has to be checked */
-  justify-content: center; /* Has to be checked */
-  height: 100vh; /* Has to be checked */
-  overflow: hidden; /* Prevent scroll bars to be showen by default */
+  align-items: center;
+  /* Has to be checked */
+  justify-content: center;
+  /* Has to be checked */
+  height: 100vh;
+  /* Has to be checked */
+  overflow: hidden;
+  /* Prevent scroll bars to be showen by default */
   margin: 0;
+}
 
+/* NOTE: main div */
+.container {
+  text-align: center;
+}
+
+/* NOTE: parent div for circles */
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  /* NOTE: Specifies the alignment between the items inside a flexible container when the items do not use all available space */
+  position: relative;
+  margin-bottom: 30px;
+  max-width: 100%;
+  /* NOTE: width related to container DIV (Parent DIv) */
+  width: 350px;
+}
+
+/* NOTE: Full explanation about line and CSS codes down under is in => .progress CSS class(next class) */
+/* NOTE: The ::before selector (pseudo-element) inserts something before the content of each selected element(s). */
+.progress-container::before {
+  content: '';
+  /* !!! NOTE:Use the content property to specify the content to insert.*/
+  background-color: var(--line-border-empty);
+  /* NOTE: using variables !!!attention to var()!!! */
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 100%;
+  z-index: -1;
+}
+
+/* NOTE: Blue line (ACTIVE LINE) */
+/* NOTE: How to make a Good line in CSS! */
+.progress {
+  background-color: var(--line-border-fill);
+  /* NOTE: BG-Color of line USING var(variable) */
+  position: absolute;
+  /* NOTE: parent is relative, so with absolute positioning is easy */
+  top: 50%;
+  /* NOTE: positioning the absolute */
+  left: 0;
+  /* NOTE: start from the begining of the Div */
+  transform: translateY(-50%);
+  /* NOTE: The transform property applies a 2D or 3D transformation to an element.
+   This property allows you to rotate, scale, move, skew, etc., elements. */
+  /* NOTE: The translateY() CSS function repositions an element vertically on the 2D plane */
+  /* NOTE: A percentage value refers to the height of the reference BOX DEFINED by the transform-box property. */
+  height: 4px;
+  /* NOTE: height of our line */
+  width: 0%;
+  /* NOTE: width of our line compare to width of the Div */
+  z-index: -1;
+  /* NOTE: using Z index to be sure if we want the line to go under other element on the way or top of them(here is under) */
+  transition: .4s ease;
+  /* NOTE: kinda animation start for showing the line */
+}
+
+.circle {
+  /* NOTE: creating circles with CSS */
+  background-color: #fff;
+  color: #999;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  /* NOTE: easiest way to make the content inside centered (1) */
+  align-items: center;
+  /* NOTE: (2) */
+  /* NOTE: height center */
+  justify-content: center;
+  /* NOTE: (3) */
+  /* NOTE: width center */
+  border: 3px solid var(--line-border-empty);
+  transition: .4s ease;
+}
+
+.circle.active {
+  border-color: var(--line-border-fill);
+}
+
+/* NOTE: button styling */
+.btn {
+  background-color: var(--line-border-fill);
+  color: #fff;
+  /* NOTE: Means text color inside */
+  border: 0;
+  /* NOTE: No ugly color around */
+  border-radius: 6px;
+  /* NOTE: Shape style */
+  cursor: pointer;
+  font-family: inherit;
+  /* NOTE: To be sure we have the font here */
+  padding: 8px 30px;
+  /* NOTE: Size of the button */
+  margin: 5px;
+  /* NOTE: Distance between two buttons */
+  font-size: 14px;
+}
+
+/* NOTE: he :focus selector is used to select the element that has focus.
+Tip: The :focus selector is allowed on elements that accept keyboard events or other user inputs. */
+.btn:focus {
+  outline: 0;
+  /* NOTE: An outline is a line that is drawn around elements,
+   OUTSIDE THE BORDERS, to make the element "stand out". */
+}
+
+
+/* NOTE: When the button its not DISABLED! */
+.btn:active {
+  transform: scale(0.98);
+  /* NOTE: When you click on it, it shows like toggle, kinda animation */
+}
+
+
+.btn:disabled{
+  background-color: var(--line-border-empty);
+  cursor: not-allowed;
 }
