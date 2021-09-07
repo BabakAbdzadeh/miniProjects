@@ -3,3 +3,7 @@
 ## Project 1:
 
 [Expanding Cards](https://github.com/BabakAbdzadeh/miniProjects/tree/master/Expanding%20Cards)
+
+## Project 2:
+
+[Progress Steps](https://github.com/BabakAbdzadeh/miniProjects/tree/master/Progress%20Steps)
