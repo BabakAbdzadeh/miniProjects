@@ -6,12 +6,15 @@
 
 body{
   font-family: 'Roberto', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;/* Has to be checked */
-  justify-content: center; /* Has to be checked */
-  height: 100vh; /* Has to be checked */
-  overflow: hidden; /* Prevent scroll bars to be showen by default */
+  /* NOTE: for rotating */
+  background-color: #333;
+  color: #222;
+  overflow-x: hidden; /* Prevent scroll bars to be showen by default */
   margin: 0;
 
+}
+
+.img-resizing{
+  max-width: 100%;
+  width: 1000px;
 }
