@@ -170,10 +170,18 @@ nav a:hover{
 nav ul li + li {
   margin-left: 15px;
   transform: translateX(-150%);
+  /* NOTE: becuase of left margin we had to change translateX to hide it more */
 }
 
 /* NOTE: putting css on third line and lines after (nothing here!) */
 nav ul li + li+ li{
   margin-left: 30px;
   transform: translateX(-200%);
+    /* NOTE: becuase of left margin we had to change translateX to hide it more */
+}
+
+/* NOTE:  */
+.container.show-nav + nav li{
+  transform: translateX(0);
+  transition-delay: 0.3s;
 }
