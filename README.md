@@ -7,3 +7,7 @@
 ## Project 2:
 
 [Progress Steps](https://github.com/BabakAbdzadeh/miniProjects/tree/master/Progress%20Steps)
+
+
+## Project 3:
+[Rotating Navigation](https://github.com/BabakAbdzadeh/miniProjects/tree/master/Rotating%20Navigation)
