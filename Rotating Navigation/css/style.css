@@ -1,20 +1,179 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
 * {
   box-sizing: border-box;
 }
 
-body{
-  font-family: 'Roberto', sans-serif;
-  /* NOTE: for rotating */
+body {
+  font-family: 'Lato', sans-serif;
   background-color: #333;
   color: #222;
-  overflow-x: hidden; /* Prevent scroll bars to be showen by default */
+  overflow-x: hidden;
+  /* NOTE: We only want to hide scroll bar on X-axis */
   margin: 0;
+}
+
+/* NOTE: main CSS on container div happening here */
+.container {
+  background-color: #fafafa;
+  transform-origin: top left;
+  /* NOTE: change the rotation point, here is top left,when
+  show-nav classs => transform: rotate applies  */
+  transition: transform 0.5s linear;
+  /* NOTE: Do a transition on transform property */
+  /* NOTE: these three down here are for structural beauty */
+  width: 100vw;
+  /* NOTE: why? IDK */
+  min-height: 100vw;
+  padding: 50px;
+}
+
+/* NOTE: this CSS codes is for un-written class which when applied by
+JS it will rotate container (and childrens inside) */
+/* NOTE: name of the class is: show-nav  */
+.container.show-nav {
+  transform: rotate(-20deg);
+  /* NOTE: The transform property applies a 2D or 3D transformation to an element.
+   This property allows you to rotate, scale, move, skew, etc., elements. */
+}
+
+/* NOTE: main div for containing the cirlce */
+.circle-container{
+  position: fixed; /* NOTE: because we want to put 75% off-screen */
+  top: -100px;
+  left: -100px; /* NOTE: So, basically we start the div at -100,-100 => so if
+  we put anything with the size of 200,200; We just show 25% inside the screen */
+}
+
+.circle{
+  /* NOTE: creating the reddish cirlce */
+  background-color: #ff7979;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+
+  position: relative; /* NOTE: because we want to make the icons position absulute */
+  transition: transform 0.5s linear; /* NOTE: why when we have rotation on container? *//* NOTE: going to rotate, give us next 25% of circle, same as container*/
 
 }
 
-.img-resizing{
+.circle button{
+  /* NOTE: because these codes are general for both Open/Close icons,
+  we have to write specific codes for each Icon! */
+  position: absolute;
+  /* NOTE: becuase of absolute positioning to relative parent container, we can
+  position the buttons from (0,0) cordinate which means (-100px,-100px) */
+  /* NOTE: both icons are on each-other, only for customizing both of them */
+  top: 50%;
+  left: 50%;
+
+/* NOTE: DOWN: */
+/* NOTE: shaping the icons */
+  height: 100px;
+  background: transparent;
+  border: 0;
+  font-size: 26px;
+  color: #ffff;
+
+}
+
+
+.circle button:focus{
+  /* NOTE: removing the border line when the curser is clicking the icon */
+  outline: none;
+}
+
+
+/* NOTE:  specific CSS for each icon */
+.circle button#open{
+  left: 60%; /* NOTE: becuase of absolute positioning before! */
+}
+.circle button#close{
+  top: 50%;
+  transform: rotate(90deg); /* NOTE: attention its positive not negetive! */
+  transform-origin: top left;
+  /* NOTE: last two lines are like passive positioning! */
+}
+
+.container.show-nav .circle {
+  transform: rotate(-70deg);
+  /* NOTE: when show-nav activates 70 more degrees will add to circle for rotation to reach close button */
+}
+
+
+/* NOTE: Some beautifing */
+.content{
+  max-width: 1000px; /* NOTE: full screen pc 1000px, more beauty */
+  margin: 50px auto;
+}
+
+.content h1{
+  margin: 0; /* NOTE: connecting the H1 to Small, Author, for better UI */
+}
+
+.content small{
+  color: #555;
+  font-style: italic;
+}
+.content p{
+  color: #333;
+  line-height: 1.5;
+}
+
+/* NOTE: fixing the main image on the screen */
+.content img{
   max-width: 100%;
-  width: 1000px;
+}
+
+
+/* NOTE: NAV setting , first: All nav positioning*/
+nav{
+  /* NOTE: The <nav> tag defines a set of navigation links. */
+  position: fixed; /* NOTE: becuase we want icons to be on same pos always */
+  bottom: 40px;
+  left: 0;
+  z-index: 100;
+}
+
+/* NOTE: Second: unordered list setting */
+nav ul{  /* NOTE: The <ul> tag defines an unordered (bulleted) list. */
+  list-style-type: none;
+  padding-left: 30px;
+}
+/* NOTE: third: setting for all lines of the list! */
+nav ul li{
+  text-transform: uppercase;
+  color: #fff;
+  margin-left: 40 0;
+  transform: translateX(-100%);
+  transition: transform 0.4s ease-in;
+}
+
+/* NOTE: forth: setting on each i tag inside the line */
+nav ul li i{
+  font-size: 20px;
+  margin-right: 10px;
+}
+/* NOTE: fifth: CSS on each a tag, links! */
+nav a{
+  color: #fafafa;
+  text-decoration: none; /* NOTE: remove the underline because of a tag (link underline) */
+  transition: all 0.5; /* NOTE: putting lag  */
+}
+/* NOTE: for when put curser on it */
+nav a:hover{
+  color: #ff7979;
+  font-weight: bold;
+}
+
+/* NOTE: putting css on second line and lines after(third line here!) */
+nav ul li + li {
+  margin-left: 15px;
+  transform: translateX(-150%);
+}
+
+/* NOTE: putting css on third line and lines after (nothing here!) */
+nav ul li + li+ li{
+  margin-left: 30px;
+  transform: translateX(-200%);
 }
