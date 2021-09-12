@@ -184,4 +184,5 @@ nav ul li + li+ li{
 .container.show-nav + nav li{
   transform: translateX(0);
   transition-delay: 0.3s;
+  /* NOTE: transition-delay makes all transition code related with delay!s */
 }
