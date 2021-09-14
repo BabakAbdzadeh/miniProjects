@@ -6,9 +6,11 @@
 
 body{
   font-family: 'Roberto', sans-serif;
-  background-color: #9370DB;
+  background-image: linear-gradient(90deg, #7d5fff, #fff); /* NOTE: with gradient we creat a background image for whole body tag */
+  /* NOTE: linear-gradient(direction(angle, to bottom right, to right ,...),color-stop1,color-stop2,color-stop3,...) "defualt,no direction given, from top to bottom"*/
+  /* NOTE: radial gradients(defined by their center) */
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* NOTE: attention! */ /* NOTE: this one is not neccassery here because we only have one div */
   align-items: center;/* Has to be checked */
   justify-content: center; /* Has to be checked */
   height: 100vh; /* Has to be checked */
@@ -16,50 +18,45 @@ body{
   margin: 0;
 
 }
-
-.container{
-  display: flex;
-  flex-direction: row-reverse;
-
+.search{
+  display: flex; /* NOTE: to put both tags next to each other with same height positioning! */
+  position: relative; /* NOTE: to control button with absolute positioning */
 }
-
-
-#search-button{
-  background-color: #fff;
-  border: 0;
-  padding: 3px 6px;
+.btn{
   width: 50px;
   height: 50px;
   font-size: 20px;
-
-}
-#search-button:focus{
-  outline: none;
-}
-#search-button .active{
-  transform: translateX(0%);
-}
-
-.search-bar{
-  transform: scaleX(0);
-  transition: transform 0.3s ease-in;
-  visibility: hidden;
-
-
-}
-input{
   border: 0;
-  padding: 3px 5px;
-  height: 50px;
-  width: 350px;
-  font-size: 20px;
+  padding: 0px;
+  background-color: #fff;
+
+  position: absolute; /* NOTE: to control positioning the search button! */
+  /* NOTE: attention! with absolute position for search button, it can overlap the search bar! so first position most be: left: -50px. ! */
+  top: 0;
+  left: 0; /* NOTE: middle */
+  transition: transform 0.3s ease-in;
+
 }
-input:focus{
+.btn:focus{
+  outline: none;
+}
+.search.active .btn{
+  transform: translateX(-50px); /* NOTE: after search bar gets bigger than search button, we have to shift it to -50(width) due to absolute positioning and overlap */
+}
+
+.input{
+  width: 50px; /* NOTE: 1. dispalay: standard, So with the same size of search btn and overlap, its going to stay under it before get activated! */
+  height: 50px;
+  border: 0;
+  padding: 0 10px;
+  font-size: 15px;
+  transition: width 0.3s ease-in;
+
+}
+.input:focus{
   outline: none;
 }
 
-.search-bar.active{
-  transform: scaleX(1);
-  visibility: visible;
-
+.search.active .input{
+  width: 200px;
 }

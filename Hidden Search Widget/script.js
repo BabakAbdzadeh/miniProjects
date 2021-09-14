@@ -1,19 +1,11 @@
-const searchButton = document.getElementById("search-button");
-const searchBar = document.querySelector(".search-bar");
-const input = document.querySelector('input')
-let checker = true;
+const search = document.querySelector('.search');
+const btn = document.querySelector('.btn');
+
+const input = document.querySelector('input'); // NOTE:  To add typung focus on search bar
 
 
-searchButton.addEventListener('click', () => {
-  if(checker === true){
-  searchBar.classList.add('active');
-  
-  input.focus(); // NOTE: to put focuse when we open the search bar
-  checker = false;
-  }
-  else{
-    searchBar.classList.remove('active');
 
-    checker = true;
-  }
+btn.addEventListener('click', () => {
+  search.classList.toggle('active');
+  input.focus();
 })
