@@ -22,7 +22,7 @@ body{
   background-image: url('../imgs/IMG_1603.jpg');
   height: calc(100% + 70px);
   width: calc(100% + 70px);
-  position: absolute;
+
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -41,6 +41,7 @@ body{
 }
 
 .loading{
+  position: absolute;
   font-size: 50px;
   color: #fff;
 
